@@ -480,16 +480,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: 4rem;
 }
 
-.mt-5 {
-  margin-top: 1.25rem;
-}
-
 .mt-8 {
   margin-top: 2rem;
-}
-
-.mt-6 {
-  margin-top: 1.5rem;
 }
 
 .mb-4 {
@@ -504,10 +496,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 4rem;
 }
 
-.w-fit {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+.w-full {
+  width: 100%;
 }
 
 .w-20 {
@@ -516,6 +506,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .w-16 {
   width: 4rem;
+}
+
+.max-w-xl {
+  max-width: 36rem;
+}
+
+.max-w-2xl {
+  max-width: 42rem;
 }
 
 .scale-65 {
@@ -557,31 +555,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-radius: 9999px;
 }
 
-.rounded-b {
-  border-bottom-right-radius: 0.25rem;
-  border-bottom-left-radius: 0.25rem;
-}
-
-.rounded-br {
-  border-bottom-right-radius: 0.25rem;
-}
-
-.rounded-br-3xl {
-  border-bottom-right-radius: 1.5rem;
-}
-
-.rounded-br-full {
-  border-bottom-right-radius: 9999px;
-}
-
-.rounded-br-\[60px\] {
-  border-bottom-right-radius: 60px;
-}
-
-.rounded-br-\[100px\] {
-  border-bottom-right-radius: 100px;
-}
-
 .rounded-br-\[120px\] {
   border-bottom-right-radius: 120px;
 }
@@ -610,12 +583,13 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: hsl(259 100% 65% / var(--tw-bg-opacity));
 }
 
-.p-2 {
-  padding: 0.5rem;
-}
-
 .p-3 {
   padding: 0.75rem;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .px-6 {
@@ -706,4 +680,44 @@ hr {
 
 .focus\:outline-primary-purple:focus {
   outline-color: hsl(259, 100%, 65%);
+}
+
+@media (min-width: 768px) {
+  .md\:ml-auto {
+    margin-left: auto;
+  }
+
+  .md\:w-24 {
+    width: 6rem;
+  }
+
+  .md\:gap-x-6 {
+    -moz-column-gap: 1.5rem;
+         column-gap: 1.5rem;
+  }
+
+  .md\:text-6xl {
+    font-size: 3.75rem;
+    line-height: 1;
+  }
+
+  .md\:text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  .md\:placeholder\:text-lg::-moz-placeholder {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  .md\:placeholder\:text-lg:-ms-input-placeholder {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  .md\:placeholder\:text-lg::placeholder {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
 }
