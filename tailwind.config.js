@@ -27,7 +27,14 @@ module.exports = {
         'black': 'hsl(0, 0%, 8%)'
       }
     },
-    extend: {},
+    fontFamily: {
+      sans: ['"Poppins"', 'sans-serif']
+    },
+    extend: {
+      scale: {
+        '65': '0.65'
+      }
+    },
   },
   plugins: [],
 }

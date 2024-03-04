@@ -3,32 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png"> 
   <title>Frontend Mentor | Age calculator app</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
-<body>
+<body class="bg-neutral-off-white flex flex-col items-center">
+  <div class="bg-neutral-white px-6 py-8 w-fit mt-16 rounded-2xl rounded-br-[120px]">
+    <form action="">
 
-  Day
-  DD
+      <!-- INPUTS -->
+      <div class="flex uppercase gap-x-5">
+        <!-- get rid of the counter on all the inputs and give them a transparent background with a border color of  -->
+        <div class="flex flex-col gap-y-1">
+          <label class="text-neutral-smoke text-sm font-bold" for="day">Day</label>
+          <input class="border border-neutral-grey rounded-md w-20 p-3 text-neutral-black font-bold focus:outline focus:outline-1 focus:outline-primary-purple" type="number" id="day" name="day" min="1" max="31" placeholder="DD" required>
+        </div>
+      
+        <div class="flex flex-col gap-y-1">
+          <label class="text-neutral-smoke text-sm font-bold" for="month">Month</label>
+          <input class="border border-neutral-grey rounded-md w-20 p-3 text-neutral-black font-bold focus:outline focus:outline-1 focus:outline-primary-purple" type="number" id="month" name="month" min="1" max="12" placeholder="MM" required>
+        </div>
+      
+        <div class="flex flex-col gap-y-1">
+          <label class="text-neutral-smoke text-sm font-bold" for="year">Year</label>
+          <input class="border border-neutral-grey rounded-md w-20 p-3 text-neutral-black font-bold focus:outline focus:outline-1 focus:outline-primary-purple" type="number" id="year" name="year" min="1000" max="9999" placeholder="YYYY" required>
+        </div>
+      </div>  
 
-  Month
-  MM
+      <!-- BUTTON -->
+      <div class="relative flex justify-center mt-8">
+        <hr>
+        <button class="z-10" type="submit">
+          <div class="w-16 h-16 bg-primary-purple flex items-center justify-center rounded-full">
+            <img class="scale-65" src="/assets/images/icon-arrow.svg" alt="button-icon">
+          </div>
+        </button>
+      </div>
+    </form>
 
-  Year
-  YYYY
-
-  -- years
-  -- months
-  -- days
-  
+    <!-- RESULT -->
+    <div class="text-5xl font-bold italic mt-8 mb-4">
+      <p><span id="yearValue" class="text-primary-purple">--</span> years</p>
+      <p><span id="monthValue" class="text-primary-purple">--</span> months</p>
+      <p><span id="dayValue" class="text-primary-purple">--</span> days</p>
+    </div>
+  </div>  
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="#">Your Name Here</a>.
