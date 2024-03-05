@@ -214,14 +214,42 @@ function isLeapYear(year) {
   return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
 }
 
-// Event listeners
-form.addEventListener("change", (event) => {
-  if (event.target === monthInput || event.target === yearInput) {
-    updateDayMax();
-  }
+const today = new Date()
+
+yearInput.addEventListener("change", () => {
+    const selectedYear = parseInt(yearInput.value, 10)
+    const selectedMonth = parseInt(monthInput.value, 10) - 1 // Adjust for month index (0-based)
+    const currentMonth = today.getMonth()
+    const currentDay = today.getDate();
+
+    // Update month based on selected year and current month
+    monthInput.max = 12; // Reset max
+    if(selectedYear === today.getFullYear()) {
+        monthInput.max = currentMonth + 1; // Max is current month
+    }
+
+    // Update day max based on selected year, month, and current date
+    dayInput.max = 31; // Reset max
+    if (selectedYear === today.getFullYear() && currentMonth === selectedMonth) { // if present month and year
+        dayInput.max = currentDay;
+    } else {
+        updateDayMax();
+    }
 });
 
+monthInput.addEventListener("change", () => {
+    const selectedYear = parseInt(yearInput.value, 10)
+    const selectedMonth = parseInt(monthInput.value, 10) - 1 // Adjust for month index (0-based)
+
+    if (selectedYear === today.getFullYear() && currentMonth === selectedMonth) { // if present month and year
+        dayInput.max = currentDay;
+    } else {
+        updateDayMax();
+    }
+})
+
 // Update on initial load
+yearInput.max = today.getFullYear()
 updateDayMax();
 
   
