@@ -185,6 +185,45 @@ function animateNumber(element, startVal, endVal, duration) {
     }, 1000 / 60); // 60 FPS
 }
   
+
+// Get form and input elements
+const dayInput = document.getElementById("day");
+const monthInput = document.getElementById("month");
+const yearInput = document.getElementById("year");
+
+// Function to update day input's max based on month and year
+function updateDayMax() {
+  const month = parseInt(monthInput.value, 10);
+  const year = parseInt(yearInput.value, 10);
+
+  let maxDays = 31; // Default
+
+  // Handle leap year for February
+  if (month === 2 && isLeapYear(year)) {
+    maxDays = 29;
+  } else if (month === 4 || month === 6 || month === 9 || month === 11) {
+    maxDays = 30;
+  }
+
+  // Update day input's max attribute
+  dayInput.max = maxDays;
+}
+
+// Check for leap year
+function isLeapYear(year) {
+  return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+}
+
+// Event listeners
+form.addEventListener("change", (event) => {
+  if (event.target === monthInput || event.target === yearInput) {
+    updateDayMax();
+  }
+});
+
+// Update on initial load
+updateDayMax();
+
   
   
   
