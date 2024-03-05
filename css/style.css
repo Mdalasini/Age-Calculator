@@ -661,15 +661,6 @@ hr {
   outline-color: hsl(0, 100%, 67%);
 }
 
-.attribution {
-  font-size: 11px;
-  text-align: center;
-}
-
-.attribution a {
-  color: hsl(228, 45%, 44%);
-}
-
 .focus\:outline:focus {
   outline-style: solid;
 }

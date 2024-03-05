@@ -25,6 +25,3 @@ hr {
 .input-invalid {
   @apply invalid:focus:outline-primary-red
 }
-
-.attribution { font-size: 11px; text-align: center; }
-.attribution a { color: hsl(228, 45%, 44%); }
