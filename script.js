@@ -86,9 +86,9 @@ function calculateAge(birthDate) {
     }
 
     return {
-        years: years,
-        months: months,
-        days: days,
+        years: Number(years),
+        months: Number(months),
+        days: Number(days),
     }
 }
 
@@ -117,10 +117,74 @@ function updateAgeDisplay(age) {
     }
   
     // Update innerText of elements
-    yearElement.innerText = age.years;
-    monthElement.innerText = age.months;
-    dayElement.innerText = age.days;
+    var duration = 1
+    // Year
+    console.log(yearElement.innerText === '--')
+    animateNumber(yearElement, yearElement.innerText, age.years, duration);
+
+    // Month
+    animateNumber(monthElement, monthElement.innerText, age.months, duration);
+
+    // Day
+    animateNumber(dayElement, dayElement.innerText, age.days, duration);
 }
+
+/**
+ * Animates the transition of an element's inner text from a start number to a target number
+ * with a slow start, ramp-up, and slow-down effect.
+ *
+ * @param {HTMLElement} element The HTML element whose inner text will be animated.
+ * @param {number | string} startVal The starting value of the animation, either a number or "--" to be treated as zero.
+ * @param {number} endVal The target value of the animation.
+ * @param {number} duration The duration of the animation in seconds.
+ * @returns {void}
+ */
+function animateNumber(element, startVal, endVal, duration) {
+    if (typeof element !== "object" || !(element instanceof HTMLElement)) {
+      throw new Error("Invalid element provided.");
+    }
+  
+    if (typeof endVal !== "number") {
+      throw new Error("End value must be a number.");
+    }
+  
+    if (duration <= 0) {
+      throw new Error("Duration must be a positive number.");
+    }
+  
+    // Handle starting value as "--"
+    let numbericStartVal;
+    if (startVal === "--") {
+      numbericStartVal = 0;
+    } else {
+        try {
+            numbericStartVal = parseFloat(startVal)
+        } catch (error) {
+            throw new Error("Invalid start value. Must be a number or a string that can be converted to a number")
+        }
+    }
+  
+    const totalSteps = Math.floor(duration * 60); // 60 steps per second
+    const incrementPerStep = (endVal - numbericStartVal) / totalSteps;
+    let currentVal = numbericStartVal;
+    let step = 0;
+  
+    const easingFunction = (t) => t * t * (3 - 2 * t); // Ease in and ease out easing function
+  
+    const intervalId = setInterval(() => {
+      step++;
+      const progress = step / totalSteps;
+      const easedProgress = easingFunction(progress);
+      const newStepValue = Math.round(numbericStartVal + easedProgress * (endVal - numbericStartVal)); // Round to integer
+  
+      element.innerText = newStepValue;
+  
+      if (step === totalSteps) {
+        clearInterval(intervalId);
+      }
+    }, 1000 / 60); // 60 FPS
+}
+  
   
   
   
